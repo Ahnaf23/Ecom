@@ -85,7 +85,7 @@ else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'ecomDB',
+            'NAME': 'ecomdb',
             'USER': 'ecom_admin',
             'PASSWORD': '626216',
             'HOST': 'localhost',
