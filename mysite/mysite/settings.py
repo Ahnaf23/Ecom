@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'j)ouk3jyeqt(m*^prym2z@s#=-jq%j9vcp=nrb649ord=)3=uz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['178.128.97.55']
 
@@ -72,26 +72,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-if DEBUG:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql_psycopg2',
+                'NAME': 'ecomdb',
+                'USER': 'ecom_admin',
+                'PASSWORD': '626216',
+                'HOST': 'localhost',
+                'PORT': '',
+            }
         }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': 'ecomdb',
-            'USER': 'ecom_admin',
-            'PASSWORD': '626216',
-            'HOST': 'localhost',
-            'PORT': '',
-        }
-    }
 
 
 
