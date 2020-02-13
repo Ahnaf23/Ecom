@@ -25,7 +25,7 @@ SECRET_KEY = 'j)ouk3jyeqt(m*^prym2z@s#=-jq%j9vcp=nrb649ord=)3=uz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['178.128.97.55']
+ALLOWED_HOSTS = ['178.128.97.55', '127.0.0.1']
 
 
 # Application definition
@@ -72,17 +72,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
 
-
-DATABASES = {
-            'default': {
-                'ENGINE': 'django.db.backends.postgresql_psycopg2',
-                'NAME': 'ecomdb',
-                'USER': 'ecom_admin',
-                'PASSWORD': '626216',
-                'HOST': 'localhost',
-                'PORT': '',
-            }
+# Database
+# https://docs.djangoproject.com/en/2.2/ref/settings/#databases
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'ecomdb',
+            'USER': 'ecom_admin',
+            'PASSWORD': '626216',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
 
 
 
@@ -125,7 +134,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+
 # Managing media
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media_root')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
