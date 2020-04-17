@@ -1,1 +1,1 @@
-web: gunicorn fast-harbor-44364.wsgi
+web: gunicorn mysite.wsgi
